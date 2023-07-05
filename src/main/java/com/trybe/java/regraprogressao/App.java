@@ -29,7 +29,33 @@ public class App {
       System.out.println("Digite a nota obtida para " + name + ":");
       examesGrade[i] = scanner.nextLine();
     }
-
     scanner.close();
+    calculateGrade(examesGrade, examesWeight);
+  }
+
+  /**
+   * Metodo calculateGrade.
+   */
+  public static void calculateGrade(String[] notas, String[] pesos) {
+    float subSum = 0;
+    int weightSum = 100;
+    for (int i = 0; i < notas.length; i++) {
+      int nota = Integer.parseInt(notas[i]);
+      int peso = Integer.parseInt(pesos[i]);
+      int result = nota * peso;
+      subSum += result;
+    }
+    float finalGrade = subSum / weightSum;
+    if (finalGrade >= 85) {
+      System.out.println("Parabéns! Você alcançou " + finalGrade + "%! E temos o prazer de "
+          +
+          "informar que você obteve aprovação!");
+    } else {
+      System.out.println("Lamentamos informar que, com base na sua pontuação alcançada neste "
+          +
+          "período, " + finalGrade + "%, você não atingiu a pontuação mínima necessária "
+          +
+          "para sua aprovação.");
+    }
   }
 }
